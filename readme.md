@@ -13,8 +13,14 @@ Features:
 * Support MQTT
 * Web config [**Work in Progress**]
 
-# Demo version - v7
+# Version - v7
 [![Demo](https://img.youtube.com/vi/eRx7BAgu3N0/0.jpg)](https://youtu.be/eRx7BAgu3N0)
+
+# Common view
+![3d_1.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/3d_1.png)
+![3d_2.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/3d_2.png)
+![common_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/common_1.jpg)
+![common_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/common_2.jpg)
 
 # Motivation
 

@@ -14,6 +14,7 @@ Features:
 * Web config [**Work in Progress**]
 
 # Version - v7
+[Video](https://youtu.be/eRx7BAgu3N0)
 [![Demo](https://img.youtube.com/vi/eRx7BAgu3N0/0.jpg)](https://youtu.be/eRx7BAgu3N0)
 
 # Common view

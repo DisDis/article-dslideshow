@@ -105,16 +105,23 @@ Features:
 ### Настройка
 Сконфигурируйте /boot/firmware/config.txt
 >\# disable sound
+>
 >dtparam=audio=off
+>
 >\# disable boost
+>
 >arm_boost=0
 >
 >\# UART on
+>
 >enable_uart=1
+>
 >\# Bluetooth off
+>
 >dtoverlay=disable-bt
 >
 >\# disable splash
+>
 >disable_splash=1
 
 #### Отключить сервисы связанные с блютус, UART, serial0

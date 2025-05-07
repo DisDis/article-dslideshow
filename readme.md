@@ -105,18 +105,17 @@ Features:
 ### Настройка
 Сконфигурируйте /boot/firmware/config.txt
 >\# disable sound
-dtparam=audio=off
-\# disable boost
-arm_boost=0
-<br>
-\# UART on
-enable_uart=1
-\# Bluetooth off
-dtoverlay=disable-bt
-<br>
-\# disable splash
-disable_splash=1
-
+>dtparam=audio=off
+>\# disable boost
+>arm_boost=0
+>
+>\# UART on
+>enable_uart=1
+>\# Bluetooth off
+>dtoverlay=disable-bt
+>
+>\# disable splash
+>disable_splash=1
 
 #### Отключить сервисы связанные с блютус, UART, serial0
 >sudo systemctl disable hciuart.service
@@ -206,6 +205,7 @@ sudo apt upgrade
 >images
 
 поместите пару картинок или видео mp4 в папку images.
+
 Установите пакет.
 >sudo apt install ./dslideshow-7.2.0+1-arm64-pi4.deb
 
@@ -222,15 +222,15 @@ sudo apt upgrade
 От PCB_Buttons - до RaPi 270mm - 0,12мм2 * 5 шт (B1,...,Common)
 
 От DC-099 - до Power pcb - 150mm - 0,75мм2 - 2 шт (+,-)
-От DC-099 - до Wago(p) - 120mm - 0,75мм2 - 1 шт(-)
+От DC-099 - до Wago(p) - 120mm - 0,75мм2 - 1 шт (-)
 
-От Power pcb - до Wago(p) - 120mm - 0,75мм2 - 1шт (+5v)
+От Wago(p) - до Power pcb - 120mm - 0,75мм2 - 1шт (+5v)
 От Wago(p) - до RaPi - 220mm - 0,75мм2(0,5mm2 - min) - 2шт (+,-)
 От Wago(p) - до LCD Driver 300mm - 0,75мм2(0,5mm2 - min) - 2шт (+,-)
 
 HDMI - MicroHDMI - 300mm(30cm)
 
-Отрежте Филамент(1.75мм) - 22mm - 9шт
+Отрежте филамент(1.75мм) - 22mm - 9шт
 
 ### Плата с кнопками и сенсор присутствия людей
 **Подготовьте плату с кнопками**. Впаяйте в плату провода(0.12мм2) нужной длины. Припаяйте перемычку(просто кусочек провода) на плату в позицию R5. Припаяйте кнопки к плате. Каждый провод промаркируйте.(B1,B2,B3,B4,Com). Желательно все провода выходящие с платы залить небольшим кол-вом термоклея. К концам провода припаяйте коннекторы для присоединения к 40-pin GPIO header RaPi. 

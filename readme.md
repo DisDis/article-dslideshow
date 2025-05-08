@@ -25,10 +25,59 @@ Features:
 
 # — English Text —
 
+ # Motivation
+They have worse quality of display, Usually it has 720p, sometimes you can find 2K display. But the most frustration to if you leave room it demonstrates photos to a empty room. And you must power off the photoframe. Therefore, you have to manually turn off such “photoframe”, and therefore then there is no desire to turn them on, since this is an unnecessary action. Most of photoframes need to store media to usb or do a lot of action to upload new photos to a device. Of course there is no integration with smart home.
+And at some moment I decided to change this situation. Thus began a 5 year long story...
+
+# Making a photoframe
+## What you need for assembly
+- Electronic components
+  - 1 * RaPi4 (min 1Gb) / RaPi5 + Aluminum Heatsink (min)
+  - [Optional] 1 * LED (something like LED Diode 5 mm) 
+  - [Optional for LED] 3.3K Ohm resistor
+  - [Recommend] 4 * Button (6*6*9 min)
+  - [Recommend] PCB_Buttons 
+  - [Recommend] 1 * HLK-LD2410 - 24GHz Smart Human Presence Sensing Radar Module ([Ali](https://aliexpress.com/item/1005004786874722.html)) 
+  - 1 * 2560*1600 Display (TFTMD089030 + Driver TC358870XBG) ([Ali](https://aliexpress.com/item/1005002008224190.html))
+    - **SUPPORTED only** TC358870XBG driver!
+    - 197.60(W) x 129.60(H) mm
+  -  1 * Power supply 30W min (9-30V) 5.5x2.1 (5.5.x2.5)
+  - 1 * Female DC Power plug 5.5х2.1mm DC-099 ([Ali](https://aliexpress.com/item/4000053061172.html))
+  - 1 * DC-DC 9-30V -> 5V5A ( [Ali](https://aliexpress.com/item/32763711912.html) )
+  - 1 * MicroUSB connector male (for LCD driver)
+  - 1 * USB Type-C connector male (for RaPi)
+  - 1 * HDMI - Micro-HDMI (30cm max!)
+  - 1 * microSDXC for Media 
+  - Wires :) (0.75mm2, 0,12mm2, 0,07mm2)
+- 1 * Glass - 235x170x2mm (recommend - **233х168х2**, max - 234x169x2, min - 230x165x1.5) 
+- Glue-gun
+- 2 * M2х8 Countersunk Flat Head Bolt for Body
+- 2 * M2х6 Countersunk Flat Head Bolt for PCB_Buttons
+- 4 * M2х3.5(3.2) Copper Insert Nut
+- 2 * WAGO 3 port 2.5mm2 - Mount connection terminal WAGO 2273-203
+- 1.8(1.75)mm, 3.5mm drill 
+
+## What you need to print.
+- 1 * Body (Body) with tree-supports
+- 1 * Screen holder (Screen Holder = SH)
+- 1 * Back cover of the device (Back) with tree-supports.
+- 4 * Screen retainers (Screen retainers = SR)
+- 1 * Universal PCB_Buttons for buttons “PCB_dslideshow”, [dslideshow - EasyEDA](https://easyeda.com/igor.demyanov/dslideshow) you can order by jlcpcb. 
+
+I recommend printing with ‘Only one wall on top surfaces’ and ‘Only one wall on first layer’. Use a 0.2mm layer.
+Use tree-supports, ‘on build plate only’, ‘Support/object first layer gap’ = 0.4mm’ 
+![orca_1.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/orca_1.png)
+![orca_2.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/orca_2.png)
+![orca_3.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/orca_3.png)
+
+
+
  **IN PROGRESS**
+
  **IN PROGRESS**
  *IN PROGRESS*
  **IN PROGRESS**
+
  **IN PROGRESS**
 
 # — Original Text —
@@ -44,7 +93,7 @@ Features:
   - [Optional] 1 * LED (something like LED Diode 5 mm) 
   - [Optional for LED] 3.3K Ohm resistor
   - [Recommend] 4 * Button (6*6*9 min)
-  - [Recommend] Button PCB 
+  - [Recommend] PCB_Buttons 
   - [Recommend] 1 * HLK-LD2410 - 24GHz Smart Human Presence Sensing Radar Module ([Ali](https://aliexpress.com/item/1005004786874722.html)) 
   - 1 * 2560*1600 Display (TFTMD089030 + Driver TC358870XBG) ([Ali](https://aliexpress.com/item/1005002008224190.html))
     - **SUPPORTED only** TC358870XBG driver!
@@ -69,11 +118,11 @@ Features:
 - 1 * Корпус (Body) с древовидными поддержками
 - 1 * Держатель экрана (Screen Holder = SH)
 - 1 * Заднюю крышку (Back) + с древовидными поддержками.
-- 4 * Фиксаторы экрана (Screen fix = SF)
-- 1 * универсальную плату для кнопок “PCB_dslideshow”, [dslideshow - EasyEDA](https://easyeda.com/igor.demyanov/dslideshow) можно заказать через jlcpcb. 
+- 4 * Фиксаторы экрана (Screen retainers = SR)
+- 1 * универсальную плату для кнопок PCB_Buttons  “PCB_dslideshow”, [dslideshow - EasyEDA](https://easyeda.com/igor.demyanov/dslideshow) можно заказать через jlcpcb. 
 
-Рекомендую печатать с опциями 1 периметр на первом и последнем слое, высота слоя 0.2мм.
-Древовидные поддержки от стола и отступ от модели 0.4мм.
+Рекомендую печатать с опциями 1 периметр на первом и верхних поверхностях (‘Only one wall on top surfaces’, ‘Only one wall on first layer’), высота слоя 0.2мм.
+Древовидные поддержки от стола и отступ от модели 0.4мм (‘on build plate only’, ‘Support/object first layer gap’ = 0.4mm’).
 ![orca_1.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/orca_1.png)
 ![orca_2.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/orca_2.png)
 ![orca_3.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/orca_3.png)
@@ -268,14 +317,14 @@ sudo apt upgrade
 Если кнопки заедают и плохо нажимаются, возьмите сверло на 3.5мм и подкорректируйте отверстия для кнопок.
 ![body_5.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_5.jpg)
 
-**Подготовьте держатель экрана(SH)** и **4 фиксатора экрана(SF)**, с помощью сверла 1.8мм, пройдитесь по всем 10 отверстиям SH, и по 8 отверстиям(SF), ваша задача чтобы филамент достаточно плотно заходил в них и не выпадал! 
+**Подготовьте держатель экрана(SH)** и **4 фиксатора экрана(SR)**, с помощью сверла 1.8мм, пройдитесь по всем 10 отверстиям SH, и по 8 отверстиям(SR), ваша задача чтобы филамент достаточно плотно заходил в них и не выпадал! 
 ![sh_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/sh_1.jpg)
 
 Возьмите держатель экрана(SH), установите радар (HLK-LD2410) в нужное место и зафиксируйте клеевым пистолетом, а также прихватите клеем и провода выходящие из радара. Проложите провода через специальный держатель и зафиксируйте его филаментом.
 ![sh_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/sh_2.jpg)
 
 **Установите экран** в держатель(SH), предварительно удалив защитную плёнку с экрана.
-Зафиксируйте экран с помощью 4-х фиксаторов(SF) и нитей филамента, обратите внимание что фиксаторы имеют верх и низ, вверху есть ключ. У фиксаторов слева сделайте филамент подлиннее до края SH или даже может чуть больше(0.5мм), это нужно для фиксации проводов.
+Зафиксируйте экран с помощью 4-х фиксаторов(SR) и нитей филамента, обратите внимание что фиксаторы имеют верх и низ, вверху есть ключ. У фиксаторов слева сделайте филамент подлиннее до края SH или даже может чуть больше(0.5мм), это нужно для фиксации проводов.
 ![sh_3.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/sh_3.jpg)
 
 Проверьте что задняя крышка входит в пазы в корпусе, при необходимости уберите лишний пластик.
@@ -288,7 +337,7 @@ sudo apt upgrade
 *Временно прикройте белую сторону экрана* толстым картоном или бумагой от клея. Зафиксировать всё клеевым пистолетом, по 4-ём углам держателя экрана(SH), так чтобы держатель экрана не выпадал из корпуса и не двигался внутри. **Будьте осторожны**, нельзя чтобы горячий клей попал на поверхность экрана, это приводит к **выгоранию подсветки экрана**!
 
 Установите плату с кнопками (PCB_Buttons) с помощью 2х  M2 винтов.
-Провода проложите под филаментом SF с левой стороны.
+Провода проложите под филаментом SR с левой стороны.
 Подсоедините все провода к RaPi.
 схема подключения: [dslideshow - EasyEDA](https://easyeda.com/igor.demyanov/dslideshow)
 - 4 - Buttons 

@@ -70,7 +70,178 @@ Use tree-supports, ‘on build plate only’, ‘Support/object first layer gap�
 ![orca_2.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/orca_2.png)
 ![orca_3.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/orca_3.png)
 
+## Setting up  RaPi4/5
+### Install OS
+Download "Raspberry Pi OS Lite (64bit)" image.
+Run ‘rpi-imager’, select image ‘2024-11-19-raspios-bookworm-arm64-lite.img.xz’ (in my case).
+Change ‘Advanced options‘:
+- Host name. For example ‘dslideshow1’
+- ‘Enable SSH’ - set ‘Password’ or ‘Public-key’ (if you have public-kеy)
+- WiFi (**set correct wifi/pass**)
+- user/password (pi/123456)
 
+**Power on RaPi.**
+
+Wait until the RaPi connects to network. Usually it takes 1-2 minutes. 
+Login via ssh and install all updates.
+>ssh pi@dslideshow1.local
+
+>sudo apt-get update
+>sudo apt-get upgrade
+
+If you need to enable ssh login via password, edit the line in the file */etc/ssh/sshd_config*
+>sudo nano /etc/ssh/sshd_config
+
+Line:
+>PasswordAuthentication yes
+
+### Setting up OS 
+Change configuration file ‘/boot/firmware/config.txt’
+>sudo nano /boot/firmware/config.txt
+
+Add or change lines:
+>\# disable sound
+>
+>dtparam=audio=off
+>
+>\# disable boost
+>
+>arm_boost=0
+>
+>\# UART on
+>
+>enable_uart=1
+>
+>\# Bluetooth off
+>
+>dtoverlay=disable-bt
+>
+>\# disable splash
+>
+>disable_splash=1
+
+
+#### Disable bluetooth, serial0 services
+>sudo systemctl disable hciuart.service
+sudo systemctl disable bluealsa.service
+sudo systemctl disable bluetooth.service
+sudo systemctl stop serial-getty@ttyS0.service
+sudo systemctl disable serial-getty@ttyS0.service
+
+#### Setting up display for RaPi4 (**ONLY for RaPi4**)
+>sudo nano /boot/firmware/cmdline.txt
+
+Add in the end of first line:
+
+>“ video=HDMI-A-1:2560x1600M@49 ”
+
+If anything, you can check what parameters your display supports via
+>edid-decode /sys/class/drm/card1-HDMI-A-1/edid
+
+,and also see if everything works correctly.
+>kmsprint -p
+
+#### Disable ‘serial0’
+Edit file
+>sudo nano /boot/firmware/cmdline.txt
+
+remove:
+>“console=serial0,115200 “
+
+#### Setting up access and permissions
+>sudo usermod -a -G render \$USER
+>sudo usermod -a -G dialout \$USER
+>sudo usermod -a -G tty \$USER
+
+#### Setting up auto Wi-Fi AP (Access Point) 
+Source: https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/203-automated-switching-accesspoint-wifi-network 
+
+Download the archive file with
+>curl "https://www.raspberryconnect.com/images/scripts/AccessPopup.tar.gz" -o AccessPopup.tar.gz
+
+unarchive with
+>tar -xvf ./AccessPopup.tar.gz
+
+change to the AccessPopup folder
+>cd AccessPopup
+
+Run the Installer script
+>sudo ./installconfig.sh
+
+Install
+>1 = Install AccessPopup Script
+
+Next 
+>2 = Change the Access Points SSID or Password
+
+If you don't choose: The access points wifi name (ssid) is AccessPopup and the password is 1234567890.
+
+Set SSID:
+>RPiHotspot
+
+password:
+>1234567890
+
+#### Install necessary packages.
+Update OS.
+>sudo apt update
+sudo apt upgrade
+
+Install necessary packages
+>sudo apt install cmake libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdrm-dev libgbm-dev ttf-mscorefonts-installer fontconfig libsystemd-dev libinput-dev libudev-dev  libxkbcommon-dev
+
+Install necessary packages for video support
+>sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-alsa
+
+#### Install DSlideshow
+Download last version [dslideshow-7.x.x-arm64-pi4.deb](https://github.com/DisDis/dslideshow/releases)
+Put package to home folder 
+>/home/pi/
+
+Create a folder 'dslideshow' in the user's home folder
+>cd ~/
+>mkdir dslideshow
+
+change current folder
+>cd dslideshow
+
+create empty file 
+>touch config.json
+
+Create ‘images’ folder in ‘dslideshow’ folder 
+>mkdir images
+
+Put a few images or videos in ‘images’
+
+Install slideshow package.
+>sudo apt install ./dslideshow-7.2.0+1-arm64-pi4.deb
+
+**The system is ready to work.**
+
+## Prepare RaPi
+- If you use RaPi5, it is advisable to purchase active cooling, preferably copper - it is thinner.
+- If you use RaPi4, you need to install radiators on hot chips.
+   - And also remove protruding contacts in the Usb3/2 and Eth area. It is necessary so that everything fits into the case, see picture
+![cut_rapi4.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/cut_rapi4.jpg).
+
+## Assembly
+### Wires
+* From HLK-LD2410 - to RaPi - 400mm - 0,07мм2 * 3 pieces(+,-,Out)
+* From PCB_Buttons - to RaPi - 270mm - 0,12мм2 * 5 pieces (B1,...,Common)
+
+* From DC-099 - to Power pcb - 150mm - 0,75мм2 - 2 pieces (+,-)
+* From DC-099 - to Wago(p) - 120mm - 0,75мм2 - 1 pieces (-)
+
+* From Wago(p) - to Power pcb - 120mm - 0,75мм2 - 1 pieces (+5v)
+* From Wago(p) - to RaPi - 220mm - 0,75mm2(0,5mm2 - min) - 2 pieces (+,-)
+* From Wago(p) - to LCD Driver - 300mm - 0,75mm2(0,5mm2 - min) - 2 pieces (+,-)
+
+* HDMI - MicroHDMI - 300mm(30cm)
+
+* Cut plastic filament(1.75мм) - 22mm - 9 pieces
+
+**IN PROGRESS**
+### PCB_Buttons and HLK-LD2410
 
  **IN PROGRESS**
 
@@ -130,10 +301,10 @@ Use tree-supports, ‘on build plate only’, ‘Support/object first layer gap�
 ## Настройка RaPi4/5
 ### Установить OS
 Скачиваем образ "Raspberry Pi OS Lite (64bit)"
-Запускаем rpi-imager добавляем туда 2024-11-19-raspios-bookworm-arm64-lite.img.xz,
-Изменяем настройки установки:
-- Имя хоста. Например dslideshow1
-- SSH - установите доступ по паролю или через ключ (если он у вас есть)
+Запускаем rpi-imager выбираем образ ‘2024-11-19-raspios-bookworm-arm64-lite.img.xz’ (в моём случае),
+Изменяем настройки установки (‘Advanced options‘):
+- Имя хоста. Например ‘dslideshow1’
+- ‘Enable SSH’ - set ‘Password’ or ‘Public-key’ - установите доступ по паролю или через ключ (если он у вас есть)
 - WiFi (укажите рабочий!)
 - user/password (pi/123456)
 
@@ -153,6 +324,9 @@ Use tree-supports, ‘on build plate only’, ‘Support/object first layer gap�
 
 ### Настройка
 Сконфигурируйте /boot/firmware/config.txt
+>sudo nano /boot/firmware/config.txt
+
+Добавте или измените следующие строки
 >\# disable sound
 >
 >dtparam=audio=off
@@ -251,8 +425,9 @@ sudo apt upgrade
 залейте её в корень домашней папки 
 >/home/pi/
 
-Создайте в корне папку 
->dslideshow
+Создайте ‘dslideshow’ в корне папку 
+>cd ~/
+>mkdir dslideshow
 
 создайте пустой файл 
 >config.json
@@ -286,7 +461,7 @@ sudo apt upgrade
 
 * HDMI - MicroHDMI - 300mm(30cm)
 
-* Отрежте филамент(1.75мм) - 22mm - 9шт
+* Отрежьте филамент(1.75мм) - 22mm - 9шт
 
 ### Плата с кнопками и сенсор присутствия людей
 **Подготовьте плату с кнопками**. Впаяйте в плату провода(0.12мм2) нужной длины. Припаяйте перемычку(просто кусочек провода) на плату в позицию R5. Припаяйте кнопки к плате. Каждый провод промаркируйте.(B1,B2,B3,B4,Com). Желательно все провода выходящие с платы залить небольшим кол-вом термоклея. К концам провода припаяйте коннекторы для присоединения к 40-pin GPIO header RaPi. 
@@ -411,7 +586,6 @@ sudo apt upgrade
 - Введите код с фоторамки в нужное поле
 - Прикрепите файл с новой прошивкой
 - Нажмите на кнопку upload и рамка загрузит новую прошивку и сама себя обновит.
-
 
 
 # History

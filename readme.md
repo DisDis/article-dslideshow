@@ -1,5 +1,6 @@
+*Last update: 10.05.2025*
 
-Flutter photoframe on Raspberry Pi 4/5 with Human detection, buttons. (Google photo, local storage)
+Flutter photoframe on Raspberry Pi 4/5 with human detection, buttons. (Google photo, local storage)
 
 Features:
 * Shows a slideshow with different effects.
@@ -49,11 +50,12 @@ And at some moment I decided to change this situation. Thus began a 5 year long 
   - 1 * HDMI - Micro-HDMI (30cm max!)
   - 1 * microSDXC for Media 
   - Wires :) (0.75mm2, 0,12mm2, 0,07mm2)
+  - 8 * Dupont 2.54
 - 1 * Glass - 235x170x2mm (recommend - **233х168х2**, max - 234x169x2, min - 230x165x1.5) 
 - Glue-gun
 - 2 * M2х8 Countersunk Flat Head Bolt for Body
 - 2 * M2х6 Countersunk Flat Head Bolt for PCB_Buttons
-- 4 * M2х3.5(3.2) Copper Insert Nut
+- 4 * M2х3.5(3.2) brass heat set insert nut
 - 2 * WAGO 3 port 2.5mm2 - Mount connection terminal WAGO 2273-203
 - 1.8(1.75)mm, 3.5mm drill 
 
@@ -240,16 +242,130 @@ Install slideshow package.
 
 * Cut plastic filament(1.75мм) - 22mm - 9 pieces
 
-**IN PROGRESS**
 ### PCB_Buttons and HLK-LD2410
+**Prepare PCB_Buttons**.  Solder wires (0.12mm2) of the required length into the board. Solder a jumper(just a piece of wire) to the board at position R5. Solder the buttons to the board. Label each wire.(B1,B2,B3,B4,Com). It is desirable to fill all wires coming out of the board with a small amount of thermal glue. Crimp the ends of the wires with connectors (Dupont 2.54) to connect to the 40-pin GPIO header RaPi. 
+![button_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_1.jpg)
+![button_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_2.jpg)
+![button_3.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_3.jpg)
+![button_4.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_4.jpg)
+![button_5.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_5.jpg)
+![button_6.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_6.jpg)
+![button_7.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_7.jpg)
 
- **IN PROGRESS**
+**Prepare a radar**(HLK-LD2410 human presence sensor), solder 3 or 5 wires (0.07mm2) of the required length to it. Label each wire (+5v,R,T,GND,Out). It is desirable to fill all wires coming out of the board with a small amount of thermal glue. The R and T wires are optional and are needed if you want to reconfigure the sensitivity of the sensor in the future.
+Crimp the ends of the wires with connectors (Dupont 2.54) to connect to the 40-pin GPIO header RaPi. 
+![human_s_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/human_s_1.jpg)
+I recommend soldering the wires directly to the pins(Pictured left).
+![human_s_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/human_s_2.jpg)
+![human_s_3.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/human_s_3.jpg)
+![human_s_4.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/human_s_4.jpg)
 
- **IN PROGRESS**
- *IN PROGRESS*
- **IN PROGRESS**
+### Body
+Insert 4 brass heat set insert M2 into the body.
+![body_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_1.jpg)
+![body_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_2.jpg)
+Check that the brass inserts do not protrude from the button mount holes.
+![body_3.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_3.jpg)
+Check that the button board fits.
+![body_4.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_4.jpg)
+If the buttons are sticking and not pressing properly, take a 3.5mm drill bit and adjust the button holes.
+![body_5.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_5.jpg)
 
- **IN PROGRESS**
+**Prepare the screen holder(SH)** and **4 screen retainers(SR)**, using a 1.8mm drill bit, go through all 10 holes of the SH, and 8 holes of the SR, your job is to get the filament tight enough to fit into them and not fall out! 
+![sh_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/sh_1.jpg)
+
+Take the screen holder (SH), place the radar (HLK-LD2410) in the special place and fix it with a glue gun, and also glue the wires coming out of the radar. Route the wires through the special holder and fix it with filament.
+![sh_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/sh_2.jpg)
+
+**Insert the screen** into the holder(SH), removing the protective film from the screen.
+Fix the screen with 4 clips (SR) and filament, note that the clips have a top and bottom, the top has a key. On the left side of the SH, make the filament longer to the edge of SH or even a little more (0.5mm), it is necessary to fix the wires.
+![sh_3.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/sh_3.jpg)
+
+Check that the back cover fits into the grooves on the body, remove excess plastic if necessary.
+
+Install the glass in the body. (I recommend choosing special museum glass or special glass for art galleries). Be sure to remove dust and any dirt from the inside, use microfiber.
+
+Place the screen holder (SH) with the screen on the glass. Check that there is no dirt, and if there is, remove it.
+![sh_4.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/sh_4.jpg)
+
+*Temporarily cover the white side of the screen* with thick cardboard or paper to protect it from glue. Secure everything with a glue gun, on the 4 corners of the screen holder(SH), so that the screen holder does not fall out of the case or move around inside. **Be careful** not to get hot glue on the screen surface, it will **burn out the screen backlight**!
+
+Mount the button board (PCB_Buttons) with 2 M2 screws.
+Route the wires under the SR filament on the left side.
+Connect all wires to RaPi.
+wiring diagram: [dslideshow - EasyEDA](https://easyeda.com/igor.demyanov/dslideshow)
+- 4 - Buttons 
+  - (B1)Back - 16 (23 GPIO)
+  - (B2)Menu - 15 (22 GPIO)
+  - (B3)ScreenToggle -13 (27 GPIO)
+  - (B4)Pause - 11 (17 GPIO)
+  - Common - 14 (GND) 
+- 1 - HLK-LD2410 pins: 2(+5v), 8(R->TXD0 - 14 GPIO), 10(T->RXD0 - 15 GPIO), 6(GND), 32 (Out - 12 GPIO)
+
+![Schematic_dslideshow_2025-05-03.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/Schematic_dslideshow_2025-05-03.png)
+
+See the picture for connection, the pins for RaPi4/5 can be seen here:
+https://pinout.xyz/pinout/wiringpi 
+
+**Check that all +5v, GND, Common** are connected to the correct pins. All other pins are not connected to +3.3,+5, GND, this is important!
+
+**Mount all three boards into the back cover (back)**. Bend the cable from the driver to the display as shown in the picture, place it in the special place on the back cover.
+
+Secure all boards with a glue gun. Apply glue to each plastic pin.
+![back_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/back_1.jpg)
+
+**Solder usb-mini, usb-c wires of the correct length**. Pay attention to V(+) and GND(-), download the specification for your USB-C boards in advance
+![USB_mini_1.png](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/USB_mini_1.png)
+![USB_mini_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/USB_mini_2.jpg)
+![USB_C_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/USB_C_2.jpg)
+
+Connect according to the diagram.
+![wires_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/wires_1.jpg)
+
+Connect RaPi and the display driver with a 30cm HDMI-microHDMI cable as shown in the picture.
+![wires_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/wires_2.jpg)
+
+**Prepare the DC099 power port**. Solder 2 wires to GND(-) and 1 wire to V(+). The center pin is V(+).
+![DC_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/DC_1.jpg)
+![DC_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/DC_2.jpg)
+![DC_3.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/DC_3.jpg)
+
+**Insert the DC099 power port into the body**, lock it.
+Connect the long wires (+,-) from DC099 to Power_PCB. Connect the short wire (-) to WAGO(-) (3pin, 2.5mm2).
+![DC_4.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/DC_4.jpg)
+
+Before final assembly you should check that all components work, **check that all +5(+) and GND(-) are correctly connected**. To be sure, check the outputs on usb-c and usb-mini, this can be done with a USB tester or a multimeter.
+
+Connect the screen and driver.
+![screen_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/screen_1.jpg)
+
+The final assembly should look like this:
+![final_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/final_1.jpg)
+
+Check that all USB cables are inserted, all terminals are tightened, and HDMI is fully inserted. HDMI cable is plugged into HDMI-0 on the RaPi.
+
+Turn the system on. Check that everything is working. 
+Shut down the system, via the photoframe menu or ssh
+> sudo shutdown -P now
+
+Turn off the power. Insert the back cover into the slots in the case, tighten the 2 M2 screws.
+
+**Assembly complete.**
+
+
+# How to upload media
+SSH/SFTP. (sftp://pi@dslideshow1.local)
+Upload to the **/home/pi/dslideshow/images/** folder.
+
+# How to update
+The system supports OTA, by default the photo frame enables OTA for 1 minute after startup.
+- Reboot the photo frame.
+- Go to URL: 
+   - >http://dslideshow1.local:8282/ota_start.
+- As soon as you go to the page, the frame will switch to the mode of downloading the new firmware version, a code will be shown on the screen.
+- Enter the code from the photo frame into the required field
+- Attach the file with the new firmware.
+- Click on the upload button and the frame will download the new firmware and update itself.
 
 # — Original Text —
 
@@ -277,11 +393,12 @@ Install slideshow package.
   - 1 * HDMI - Micro-HDMI (30cm max!)
   - 1 * microSDXC for Media 
   - Wires :) (0.75mm2, 0,12mm2, 0,07mm2)
+  - 8 * Dupont 2.54
 - 1 * Glass - 235x170x2mm (recommend - **233х168х2**, max - 234x169x2, min - 230x165x1.5) 
 - Glue-gun
 - 2 * M2х8 Countersunk Flat Head Bolt for Body
 - 2 * M2х6 Countersunk Flat Head Bolt for PCB_Buttons
-- 4 * M2х3.5(3.2) Copper Insert Nut
+- 4 * M2х3.5(3.2) brass heat set insert nut
 - 2 * WAGO 3 port 2.5mm2 - Mount connection terminal WAGO 2273-203
 - 1.8(1.75)mm, 3.5mm drill 
 
@@ -425,7 +542,7 @@ sudo apt upgrade
 залейте её в корень домашней папки 
 >/home/pi/
 
-Создайте ‘dslideshow’ в корне папку 
+Создайте ‘dslideshow’ в корне
 >cd ~/
 >mkdir dslideshow
 
@@ -464,7 +581,7 @@ sudo apt upgrade
 * Отрежьте филамент(1.75мм) - 22mm - 9шт
 
 ### Плата с кнопками и сенсор присутствия людей
-**Подготовьте плату с кнопками**. Впаяйте в плату провода(0.12мм2) нужной длины. Припаяйте перемычку(просто кусочек провода) на плату в позицию R5. Припаяйте кнопки к плате. Каждый провод промаркируйте.(B1,B2,B3,B4,Com). Желательно все провода выходящие с платы залить небольшим кол-вом термоклея. К концам провода припаяйте коннекторы для присоединения к 40-pin GPIO header RaPi. 
+**Подготовьте плату с кнопками**. Впаяйте в плату провода(0.12мм2) нужной длины. Припаяйте перемычку(просто кусочек провода) на плату в позицию R5. Припаяйте кнопки к плате. Каждый провод промаркируйте.(B1,B2,B3,B4,Com). Желательно все провода выходящие с платы залить небольшим кол-вом термоклея. Концы проводов обожмите коннекторами(Dupont 2.54) для присоединения к 40-pin GPIO header RaPi. 
 ![button_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_1.jpg)
 ![button_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_2.jpg)
 ![button_3.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_3.jpg)
@@ -474,7 +591,7 @@ sudo apt upgrade
 ![button_7.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/button_7.jpg)
 
 **Подготовьте радар**(сенсор присутствия людей HLK-LD2410), припаяйте к нему 3 или 5 проводов(0.07мм2) нужной длины. Каждый провод промаркируйте(+5v,R,T,GND,Out). Желательно все провода выходящие с платы залить небольшим кол-вом термоклея. Провода R и T опциональные и нужны если вы хотите перенастраивать чувствительность сенсора в будущем.
-К концам провода припаяйте коннекторы для присоединения к 40-pin GPIO header RaPi. 
+Концы проводов обожмите коннекторами(Dupont 2.54) для присоединения к 40-pin GPIO header RaPi. 
 ![human_s_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/human_s_1.jpg)
 Я рекомендую припаивать провода прямо к выводам, так как при выпаивании выводов можно повредить плату.(На фото слева)
 ![human_s_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/human_s_2.jpg)
@@ -482,10 +599,10 @@ sudo apt upgrade
 ![human_s_4.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/human_s_4.jpg)
 
 ### Корпус
-Впаяйте в корпус 4 медные вставки М2.
+Впаяйте в корпус 4 латунные вставки М2.
 ![body_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_1.jpg)
 ![body_2.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_2.jpg)
-Проверьте, что медные вставки не выпирают в креплениях кнопок.
+Проверьте, что латунные вставки не выпирают в креплениях кнопок.
 ![body_3.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_3.jpg)
 Проверьте, что плата с кнопками подходит.
 ![body_4.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/body_4.jpg)
@@ -556,7 +673,7 @@ sudo apt upgrade
 
 Перед окончательной сборкой нужно проверить что все компоненты работают, **проверьте что все (+) и (-) корректно соединены**. Для верности проверьте выходы на Usb-c и usb-mini, это можно сделать через USB тестер или через мультиметр.
 
-Соедините шлейф и экран.
+Соедините шлейфом экран и драйвер.
 ![screen_1.jpg](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/v7/screen_1.jpg)
 
 Итоговая сборка должна выглядеть так:
@@ -573,7 +690,7 @@ sudo apt upgrade
 **Сборка завершена.**
 
 # Как заливать контент
-Через SSH\SFTP.
+Через SSH\SFTP. (sftp://pi@dslideshow1.local)
 Заливайте в папку **/home/pi/dslideshow/images/**
 
 # Как обновлять
@@ -586,24 +703,3 @@ sudo apt upgrade
 - Введите код с фоторамки в нужное поле
 - Прикрепите файл с новой прошивкой
 - Нажмите на кнопку upload и рамка загрузит новую прошивку и сама себя обновит.
-
-
-# History
-
-## Prototype 2
-![Proto2_1](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/prototype1/proto2_1.jpg)
-![Proto2_2](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/prototype1/proto2_2.jpg)
-![Proto2_3](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/prototype1/proto2_3.jpg)
-![Proto2_4](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/prototype1/proto2_4.jpg)
-
-
-Video: [![Demo prototype](https://img.youtube.com/vi/NFGFnHmX0TY/0.jpg)](https://youtu.be/NFGFnHmX0TY)
-
-
-Backcover prototype:
-
-![Backcover](https://raw.githubusercontent.com/DisDis/article-dslideshow/master/images/prototype1/animation.gif)
-
-
-
-https://easyeda.com/igor.demyanov/dslideshow

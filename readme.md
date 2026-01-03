@@ -1,4 +1,4 @@
-*Last update: 10.05.2025*
+*Last update: 03.01.2026*
 
 Flutter photoframe on Raspberry Pi 4/5 with human detection, buttons. (Google photo, local storage)
 
@@ -12,7 +12,7 @@ Features:
 * [Optional/**WIP**] Can download photos/video from Google Photo (non-trivial setting)  
 * Over-the-air update (OTA)
 * Support MQTT
-* Web config [**Work in Progress**]
+* Web config
 
 # Version - v7
 [Video](https://youtu.be/eRx7BAgu3N0)

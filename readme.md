@@ -89,6 +89,7 @@ Login via ssh and install all updates.
 >ssh pi@dslideshow1.local
 
 >sudo apt-get update
+>
 >sudo apt-get upgrade
 
 If you need to enable ssh login via password, edit the line in the file */etc/ssh/sshd_config*
@@ -125,10 +126,14 @@ Add or change lines:
 
 #### Disable bluetooth, serial0 services
 >sudo systemctl disable hciuart.service
-sudo systemctl disable bluealsa.service
-sudo systemctl disable bluetooth.service
-sudo systemctl stop serial-getty@ttyS0.service
-sudo systemctl disable serial-getty@ttyS0.service
+>
+>sudo systemctl disable bluealsa.service
+>
+>sudo systemctl disable bluetooth.service
+>
+>sudo systemctl stop serial-getty@ttyS0.service
+>
+>sudo systemctl disable serial-getty@ttyS0.service
 
 #### Setting up display for RaPi4 (**ONLY for RaPi4**)
 >sudo nano /boot/firmware/cmdline.txt
@@ -152,7 +157,9 @@ remove:
 
 #### Setting up access and permissions
 >sudo usermod -a -G render \$USER
+>
 >sudo usermod -a -G dialout \$USER
+>
 >sudo usermod -a -G tty \$USER
 
 #### Setting up auto Wi-Fi AP (Access Point) 
@@ -187,7 +194,8 @@ password:
 #### Install necessary packages.
 Update OS.
 >sudo apt update
-sudo apt upgrade
+>
+>sudo apt upgrade
 
 Install necessary packages
 >sudo apt install cmake libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdrm-dev libgbm-dev ttf-mscorefonts-installer fontconfig libsystemd-dev libinput-dev libudev-dev  libxkbcommon-dev
@@ -202,6 +210,7 @@ Put package to home folder
 
 Create a folder 'dslideshow' in the user's home folder
 >cd ~/
+>
 >mkdir dslideshow
 
 change current folder
@@ -216,7 +225,7 @@ Create ‘images’ folder in ‘dslideshow’ folder
 Put a few images or videos in ‘images’
 
 Install slideshow package.
->sudo apt install ./dslideshow-7.2.0+1-arm64-pi4.deb
+>sudo apt install ./dslideshow-8.1.0+2-arm64-pi4.deb
 
 **The system is ready to work.**
 
@@ -432,6 +441,7 @@ The system supports OTA, by default the photo frame enables OTA for 1 minute aft
 >ssh pi@dslideshow1.local
 
 >sudo apt-get update
+>
 >sudo apt-get upgrade
 
 Если нужно включить вход ssh через пароль, редактируем строчку в файле */etc/ssh/sshd_config*
@@ -466,10 +476,14 @@ The system supports OTA, by default the photo frame enables OTA for 1 minute aft
 
 #### Отключить сервисы связанные с блютус, UART, serial0
 >sudo systemctl disable hciuart.service
-sudo systemctl disable bluealsa.service
-sudo systemctl disable bluetooth.service
-sudo systemctl stop serial-getty@ttyS0.service
-sudo systemctl disable serial-getty@ttyS0.service
+>
+>sudo systemctl disable bluealsa.service
+>
+>sudo systemctl disable bluetooth.service
+>
+>sudo systemctl stop serial-getty@ttyS0.service
+>
+>sudo systemctl disable serial-getty@ttyS0.service
 
 #### Настройка экрана для RaPi4
 >sudo nano /boot/firmware/cmdline.txt
@@ -493,7 +507,9 @@ sudo systemctl disable serial-getty@ttyS0.service
 
 #### Настройка разрешений и прав
 >sudo usermod -a -G render \$USER
+>
 >sudo usermod -a -G dialout \$USER
+>
 >sudo usermod -a -G tty \$USER
 
 #### Настройка автоматической Wi-Fi AP (Access Point) 
@@ -529,7 +545,8 @@ Source: https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accessp
 #### Установка нужных пакетов.
 обновим все пакеты системы.
 >sudo apt update
-sudo apt upgrade
+>
+>sudo apt upgrade
 
 установим зависимости для работы приложения
 >sudo apt install cmake libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdrm-dev libgbm-dev ttf-mscorefonts-installer fontconfig libsystemd-dev libinput-dev libudev-dev  libxkbcommon-dev
@@ -544,6 +561,7 @@ sudo apt upgrade
 
 Создайте ‘dslideshow’ в корне
 >cd ~/
+>
 >mkdir dslideshow
 
 создайте пустой файл 
